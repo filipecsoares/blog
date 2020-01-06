@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
+import './PostList.css';
 
 const PostList = () => {
+
     const posts = [
                     {
                         id: 1, 
@@ -34,17 +37,19 @@ const PostList = () => {
                         createdAt: new Date(),
                     }
                 ]
+
     return (
         <div>
-            {posts.map((p) => (
-                <div>
-                    {p.title}<br />
+            {posts.map((p, i) => (
+                <div key={i} className={"PostList"}>
+                    <h2>{p.title}</h2>
                     {p.description}<br />
-                    {moment(p.createdAt).fromNow()}
+                    <div className="CreatedAt">{moment(p.createdAt).fromNow()}</div>
                 </div>
             ))}
         </div>
     );
+    
 }
 
 export default PostList;
